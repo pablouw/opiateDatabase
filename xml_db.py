@@ -13,7 +13,7 @@ def file_addition(file, db_type, replace):
     engine, tables_list = make_engine(db_type)
     file, mod_file = get_file_names(file)
     if not mod_file:
-        # print(f'File format invalid ({file}). Not added to db.')
+        print(f'File format invalid ({file}). Not added to db.')
         sys.exit()
     calibration = tables_list[0]
     db_decision = check_if_in_db(engine, file, calibration)
