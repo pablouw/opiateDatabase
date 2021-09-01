@@ -1,5 +1,4 @@
 from datetime import datetime as dt
-from verify_data import replace_comp_spelling
 import numpy as np
 import pandas as pd
 import re
@@ -42,7 +41,6 @@ def get_sample_results(sample):
 
     for compound in sample.findall('COMPOUND'):
         comp_name = compound.get('name')
-        comp_name = replace_comp_spelling(comp_name)
         comp_id = compound.get('id')
         if re.search('[Dd][3-9]', comp_name) is None:  # Analyte Section #####
             for peak in compound.findall('PEAK'):
@@ -153,7 +151,6 @@ def get_calibration_data(root, filename, mod_file):
     calibration_data = []
     for compound in calibrationdata.findall('COMPOUND'):
         cmpd_name = compound.get('name')
-        cmpd_name = replace_comp_spelling(cmpd_name)
         cmpd_id = compound.get('id')
         cmpd_dict[cmpd_id] = cmpd_name
         for response in compound.findall('RESPONSE'):
