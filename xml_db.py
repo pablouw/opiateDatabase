@@ -50,7 +50,7 @@ def directory_addition(directory, db_type):
             continue
         file, mod_file = get_file_names(file)
         if not mod_file:
-            # print(f'File format invalid ({file}). Not added to db.')
+            print(f'File format invalid ({file}). Not added to db.')
             continue
         calibration = tables_list[0]
         db_decision = check_if_in_db(engine, file, calibration)
