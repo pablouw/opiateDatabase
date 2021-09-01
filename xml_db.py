@@ -1,21 +1,14 @@
 from database import make_engine, check_if_in_db, add_to_calibration_table, add_to_result_table, add_to_batch_table
 from verify_data import get_file_names
 from process_data import collect_and_replace_data_db, extract_data, read_xml
-from __init__ import file_skip_strings, skip
 import argparse
 import os
 import sys
 
 
 def file_addition(file, db_type, replace):
-    # if file in skip:
-        # sys.exit()
     if not file.endswith(".xml"):
         print(f'{file} is not an xml file. Please enter an xml file')
-        sys.exit()
-    if any(s in file for s in file_skip_strings):
-        print('Files that are tests or modified are not accepted.')
-        print(file)
         sys.exit()
     engine, tables_list = make_engine(db_type)
     file, mod_file = get_file_names(file)
@@ -54,10 +47,6 @@ def directory_addition(directory, db_type):
     engine, tables_list = make_engine(db_type)
     for file in os.listdir(directory):
         if not file.endswith(".xml"):
-            continue
-        if file in skip:
-            continue
-        if any(s in file for s in file_skip_strings):
             continue
         file, mod_file = get_file_names(file)
         if not mod_file:
