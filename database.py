@@ -11,7 +11,6 @@ def create_db(engine):
                                    metadata,
                                    sqlalchemy.Column('calibration_pkey',
                                                      sqlalchemy.Integer,
-                                                     # sqlalchemy.Sequence('pkey', start=1, increment=1),
                                                      primary_key=True,
                                                      nullable=False),
                                    sqlalchemy.Column('xml_file', sqlalchemy.String),
@@ -30,7 +29,6 @@ def create_db(engine):
     results = sqlalchemy.Table('results', metadata,
                                sqlalchemy.Column('results_pkey',
                                                  sqlalchemy.Integer,
-                                                 # sqlalchemy.Sequence('pkey', start=1, increment=1),
                                                  primary_key=True,
                                                  nullable=False),
                                sqlalchemy.Column('xml_file', sqlalchemy.String),
@@ -58,7 +56,6 @@ def create_db(engine):
     batch = sqlalchemy.Table('batch', metadata,
                              sqlalchemy.Column('batch_pkey',
                                                sqlalchemy.Integer,
-                                               # sqlalchemy.Sequence('pkey', start=1, increment=1),
                                                primary_key=True,
                                                nullable=False),
                              sqlalchemy.Column('xml_file', sqlalchemy.String),
@@ -216,9 +213,9 @@ def add_to_batch_table(batch_data, engine, batch):
 
 def make_engine(db_type):
     if db_type == 'postgres':
-        engine = sqlalchemy.create_engine('postgresql://abedpablo:password@localhost/sample_db')
+        engine = sqlalchemy.create_engine('postgresql://')
     elif db_type == 'sqlite':
-        engine = sqlalchemy.create_engine('sqlite:////Users/abedpablo/Desktop/opiate2.db')
+        engine = sqlalchemy.create_engine('sqlite://')
     else:
         print('No recognizied database type selected. Will terminate process.')
         sys.exit()
