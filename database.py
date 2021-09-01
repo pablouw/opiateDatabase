@@ -213,9 +213,11 @@ def add_to_batch_table(batch_data, engine, batch):
 
 def make_engine(db_type):
     if db_type == 'postgres':
-        engine = sqlalchemy.create_engine('postgresql://')
+        # change to fit actual path
+        engine = sqlalchemy.create_engine('postgresql://username:password@localhost/opiates')
     elif db_type == 'sqlite':
-        engine = sqlalchemy.create_engine('sqlite://')
+        # change to fit actual path
+        engine = sqlalchemy.create_engine('sqlite:////Path/to/file/opiates.db')
     else:
         print('No recognizied database type selected. Will terminate process.')
         sys.exit()
