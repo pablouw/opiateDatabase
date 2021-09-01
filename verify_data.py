@@ -1,18 +1,5 @@
 from datetime import datetime as dt
-from __init__ import spelling_dict
 import re
-
-
-def replace_comp_spelling(compound):
-    for k, v in spelling_dict.items():
-        if type(v) == list:
-            if compound in v:
-                compound = k
-        else:
-            if compound == v:
-                compound = k
-
-    return compound
 
 
 def search_instrument(filename):
